@@ -1,5 +1,6 @@
 from special_topic import solver_cn1
 import numpy as np
+from special_topic.cn_sparse import solver_cnsp
 
 
 def test_solver_cn():
@@ -19,6 +20,11 @@ def test_solver_cn():
     t = T
     u_e = np.sin(np.pi*x)*np.exp(-(np.pi**2)*t) \
         + 0.1*np.sin(100*np.pi*x)*np.exp(-(100**2)*(np.pi**2)*t)
+    diff = abs(u_e - u).max()
+    tol = 1E-4
+    assert diff < tol, 'max diff: %g' % diff
+
+    u, x, t = solver_cnsp(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
     diff = abs(u_e - u).max()
     tol = 1E-4
     assert diff < tol, 'max diff: %g' % diff
