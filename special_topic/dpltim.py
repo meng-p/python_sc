@@ -1,8 +1,8 @@
-from implicit_whole import solver_im2
+from special_topic import solver_im2
 import matplotlib.pyplot as plt
 # import sympy as sym
 import numpy as np
-from mpl_toolkits import mplot3d
+# from mpl_toolkits import mplot3d
 
 fig = plt.figure()
 x = np.linspace(0, np.pi, 20)
@@ -20,7 +20,11 @@ ax.set_ylabel("t")
 ax.set_zlabel("u")
 plt.show()
 
-u01 = lambda x: np.sin(x)
+
+def u01(x):
+    return np.sin(x)
+
+
 L = np.pi
 T = 3
 Nx = 14
