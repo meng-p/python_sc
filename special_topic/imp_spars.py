@@ -6,8 +6,8 @@ from scipy.sparse.linalg.dsolve.linsolve import spsolve
 def solver_imsp(alpha, In, L, T, dt, dx, mu):
     Nt = int(round(T/float(dt)))
     Nx = int(round(L/dx))
-    x = np.linspace(0, L, Nx+1)
-    t = np.linspace(0, T, Nt+1)
+    x = np.linspace(0, L, Nx+1)  # mesh points in space
+    t = np.linspace(0, T, Nt+1)  # mesh points in time
     u = np.zeros(Nx+1)
     u_n = np.zeros(Nx+1)
 
@@ -15,8 +15,8 @@ def solver_imsp(alpha, In, L, T, dt, dx, mu):
     lower = np.zeros(Nx)
     upper = np.zeros(Nx)
     b = np.zeros(Nx+1)  # right-hand side vector
-
-    main[:] = 1 + 2*mu
+    # the matrix for implicit Euler scheme
+    main[:] = 1 + 2*mu  # main diagonal
     lower[:] = -mu
     upper[:] = -mu
     main[0] = 1  # insert boundary conditions
@@ -33,6 +33,7 @@ def solver_imsp(alpha, In, L, T, dt, dx, mu):
         for j in range(1, Nx):
             b[j] = u_n[j]
         b[0] = b[Nx] = 0
+        # solve the sparce linear system using the function 'spsolve'
         u[:] = spsolve(A, b)
         u_n[:] = u
     return u_n, x, t

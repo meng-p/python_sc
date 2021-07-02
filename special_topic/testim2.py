@@ -33,6 +33,7 @@ for i in range(0, 3):
     E[i] = np.linalg.norm(u-u_e, 2)
 
 dxxx = [0.01**2, 0.05**2, 0.1**2]
+# the convergence rate of the method in space
 plt.loglog(dxx, E, label="convergence rate")
 plt.loglog(dxx, dxxx, '--', label="slope=2")
 plt.loglog(dxx, dxx, '--', label="slope=1")

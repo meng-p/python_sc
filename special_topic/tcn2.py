@@ -31,6 +31,8 @@ for i in range(0, 3):
     # E[i] = abs(u[-2] - u_e)
     E[i] = np.linalg.norm(u-u_e, np.inf)
 
+
+# check the convergence rate in space using loglog plot
 dxxx = [0.01**2, 0.05**2, 0.1**2]
 plt.loglog(dxx, E, label="convergence rate")
 plt.loglog(dxx, dxxx, '--', label="slope=2")

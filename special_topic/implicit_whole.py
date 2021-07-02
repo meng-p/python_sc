@@ -6,7 +6,7 @@ def solver_im2(alpha, In, L, T, dt, dx, mu):
     Nx = int(round(L/dx))
     x = np.linspace(0, L, Nx+1)
     t = np.linspace(0, T, Nt+1)
-    u = np.zeros((Nt+1, Nx+1))
+    u = np.zeros((Nt+1, Nx+1))  # store the results at every time level
     A = np.zeros((Nx+1, Nx+1))
     b = np.zeros(Nx+1)
     A[0, 0] = A[Nx, Nx] = 1

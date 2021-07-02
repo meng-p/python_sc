@@ -21,16 +21,19 @@ def u01(x):
     return np.sin(np.pi*x) + 0.1*np.sin(100*np.pi*x)
 
 
+# apply the explicit Euler scheme (vector version)
 u, x, t, cpu = solver_emv(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
 
 t = T
 u_e = np.sin(np.pi*x)*np.exp(-(np.pi**2)*t) \
       + 0.1*np.sin(100*np.pi*x)*np.exp(-(100**2)*(np.pi**2)*t)
 
+# return the cpu time
 print(cpu)
-plt.plot(x, u0, label="Intial condition")
+plt.plot(x, u0, label="Intial condition")  # have a look at the initial shape
 plt.legend()
 plt.show()
+# compare the exact and numerical values
 plt.plot(x, u, "-.", label="Finite difference approximation")
 plt.plot(x, u_e, label="Exact solution")
 plt.legend()

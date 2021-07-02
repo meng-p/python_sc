@@ -33,6 +33,7 @@ for i in range(0, 3):
 
 dtt = [0.5*0.01**2, 0.5*0.05**2, 0.5*0.1**2]
 # dttt = [(0.5*0.01**2)**2, (0.5*0.05**2)**2, (0.5*0.1**2)**2]
+# the convergence rate of the explicit method in time
 plt.loglog(dtt, E, label="convergence rate")
 plt.loglog(dtt, np.square(dtt), '--', label="slope=2")
 plt.loglog(dtt, dtt, '--', label="slope=1")

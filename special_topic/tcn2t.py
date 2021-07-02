@@ -32,6 +32,7 @@ for i in range(0, 3):
     E[i] = np.linalg.norm(u-u_e, np.inf)
 
 # dtt = [0.5*0.01**2, 0.5*0.05**2, 0.5*0.1**2]
+# check the convergence rate in time using loglog plot
 dtt = [0.01/2, 0.05/2, 0.1/2]
 dxxx = [0.01**2, 0.05**2, 0.1**2]
 plt.loglog(dtt, E, label="convergence rate")

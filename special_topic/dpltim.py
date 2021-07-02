@@ -9,7 +9,7 @@ x = np.linspace(0, np.pi, 20)
 t = np.linspace(0, 3, 40)
 x, t = np.meshgrid(x, t)
 
-Z = np.exp(-t)*np.sin(x)
+Z = np.exp(-t)*np.sin(x)  # the exact solution is given
 ax = plt.axes(projection='3d')
 ax.plot_surface(x, t, Z, rstride=1, cstride=1,
                 cmap='viridis', edgecolor='none')
@@ -33,6 +33,7 @@ a = 1
 dx = L/Nx
 dt = T/Nt
 mu = dt/(dx**2)
+# implement the implicit Euler scheme
 u, x, t = solver_im2(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
 
 x, t = np.meshgrid(x, t)

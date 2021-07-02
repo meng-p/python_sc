@@ -16,6 +16,7 @@ def solver_em(alpha, In, L, T, dt, dx, mu):
     for j in range(0, Nx+1):
         u_n[j] = In(x[j])  # set the initial condition u(x,0)=In(x)
 
+    # use an explicit loop for solving the finite difference scheme
     for n in range(0, Nt):  # compute the solution at the internal points
         for j in range(1, Nx):
             u[j] = u_n[j] + mu*(u_n[j+1] - 2*u_n[j] + u_n[j-1])  # apply EES

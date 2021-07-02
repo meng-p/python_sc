@@ -11,9 +11,9 @@ def solver_cnsp(alpha, In, L, T, dt, dx, mu):
     t = np.linspace(0, T, Nt+1)
     u = np.zeros(Nx+1)
     u_n = np.zeros(Nx+1)
-    main = np.zeros(Nx+1)
-    lower = np.zeros(Nx)
-    upper = np.zeros(Nx)
+    main = np.zeros(Nx+1)  # main diagonal
+    lower = np.zeros(Nx)  # the first diagonal below the main diagonal
+    upper = np.zeros(Nx)  # the first diagonal above the main diagonal
     b = np.zeros(Nx+1)
     # Precompute sparse matrix
     main[:] = 1 + mu
@@ -31,12 +31,12 @@ def solver_cnsp(alpha, In, L, T, dt, dx, mu):
         offsets=[0, -1, 1], shape=(Nx+1, Nx+1),
         format='csr')
 
-    for j in range(0, Nx+1):
+    for j in range(0, Nx+1):  # set initial conditions
         u_n[j] = In(x[j])
     for m in range(0, Nt):
         for j in range(1, Nx):
             b[j] = u_n[j] + mu*0.5*(u_n[j+1]-2*u_n[j]+u_n[j-1])
         b[0] = b[Nx] = 0  # boundary conditions
-        u[:] = spsolve(A, b)
+        u[:] = spsolve(A, b)  # solve the linear system with a sparse matrix
         u_n[:] = u
     return u_n, x, t

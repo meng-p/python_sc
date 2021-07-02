@@ -16,13 +16,14 @@ def u01(x):
     return np.sin(np.pi*x) + 0.1*np.sin(100*np.pi*x)
 
 
+# apply the implicit Euler scheme (sparce matrix version)
 u, x, t = solver_imsp(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
 
 t = T
 u_i = np.sin(np.pi*x)*np.exp(-(np.pi**2)*t) \
       + 0.1*np.sin(100*np.pi*x)*np.exp(-(100**2)*(np.pi**2)*t)
 
-
+# compare the exact and numerical values
 plt.plot(x, u, "-.", label="Finite difference approximation")
 plt.plot(x, u_i, label="Exact solution")
 plt.legend()

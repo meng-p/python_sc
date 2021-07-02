@@ -5,14 +5,14 @@ import numpy as np
 # from mpl_toolkits import mplot3d
 
 fig = plt.figure()
-x = np.linspace(0, np.pi, 20)
-t = np.linspace(0, 3, 40)
+x = np.linspace(0, np.pi, 20)  # x \in [0,pi], Nx+1=20
+t = np.linspace(0, 3, 40)  # t \in [0,3], Nt+1=40
 x, t = np.meshgrid(x, t)
 
 Z = np.exp(-t)*np.sin(x)
 ax = plt.axes(projection='3d')
 ax.plot_surface(x, t, Z, rstride=1, cstride=1,
-                cmap='viridis', edgecolor='none')
+                cmap='viridis', edgecolor='none')  # 3d plot
 ax.set_xlabel("x")
 
 ax.set_ylabel("t")
@@ -21,13 +21,13 @@ ax.set_zlabel("u")
 plt.show()
 
 
-def u01(x):
+def u01(x):  # initial condition
     return np.sin(x)
 
 
 L = np.pi
 T = 3
-Nx = 14
+Nx = 14  # choose a different step size
 Nt = 199
 a = 1
 dx = L/Nx

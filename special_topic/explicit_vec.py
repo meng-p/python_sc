@@ -16,6 +16,7 @@ def solver_emv(alpha, In, L, T, dt, dx, mu):
     for j in range(0, Nx+1):
         u_n[j] = In(x[j])  # set the initial condition u(x,0)=In(x)
 
+    # use the vectorised version imstead of the explicit loop
     for n in range(0, Nt):  # compute the solution at the internal points
         u[1:Nx] = u_n[1:Nx] + mu*(u_n[0:Nx-1] - 2*u_n[1:Nx] + u_n[2:Nx+1])
         u[0] = 0

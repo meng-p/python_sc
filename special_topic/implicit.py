@@ -10,7 +10,7 @@ def solver_im(alpha, In, L, T, dt, dx, mu):
     u = np.zeros(Nx+1)
     u_n = np.zeros(Nx+1)
     A = np.zeros((Nx+1, Nx+1))  # construct the linear system
-    b = np.zeros(Nx+1)
+    b = np.zeros(Nx+1)  # the right-hand side of the linear system
     for j in range(1, Nx):
         A[j, j-1] = -mu
         A[j, j+1] = -mu
@@ -24,5 +24,5 @@ def solver_im(alpha, In, L, T, dt, dx, mu):
             b[j] = u_n[j]
         b[0] = b[Nx] = 0
         u[:] = solve(A, b)
-        u_n[:] = u
+        u_n[:] = u  # switch variables before the next step
     return u_n, x, t
