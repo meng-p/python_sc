@@ -9,9 +9,8 @@ L = 1
 T = 0.1
 Nx = int(round(L/dx))
 # dt = 0.5*(dx**2) # dt=0.005
-a = 1
 dt = 0.5*(dx**2)
-mu = a*dt/(dx**2)  # mu=0.5
+mu = dt/(dx**2)  # mu=0.5
 x = np.linspace(0, L, Nx+1)
 u0 = np.sin(np.pi*x) + 0.1*np.sin(100*np.pi*x)
 # plt.plot(x, u0, '-', label='inital')
@@ -22,7 +21,7 @@ def u01(x):
 
 
 # apply the explicit Euler scheme (vector version)
-u, x, t, cpu = solver_emv(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
+u, x, t, cpu = solver_emv(In=u01, L=L, T=T, dx=dx, dt=dt, mu=mu)
 
 t = T
 u_e = np.sin(np.pi*x)*np.exp(-(np.pi**2)*t) \

@@ -22,7 +22,7 @@ for i in range(0, 3):
     # dt = mu*dx**2
     dt = dx/2
     mu = dt/(dx**2)
-    u, x, t = solver_im(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
+    u, x, t = solver_im(In=u01, L=L, T=T, dx=dx, dt=dt, mu=mu)
     t = T
     # x = L - dx
     u_e = np.sin(np.pi*x)*np.exp(-(np.pi**2)*t) \

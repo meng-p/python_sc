@@ -2,7 +2,7 @@ import numpy as np
 from scipy.linalg import solve
 
 
-def solver_im(alpha, In, L, T, dt, dx, mu):
+def solver_im(In, L, T, dt, dx, mu):
     Nt = int(round(T/float(dt)))
     Nx = int(round(L/dx))
     x = np.linspace(0, L, Nx+1)

@@ -4,7 +4,7 @@ from scipy.sparse.linalg.dsolve.linsolve import spsolve
 # forward in time, central in space
 
 
-def solver_cnsp(alpha, In, L, T, dt, dx, mu):
+def solver_cnsp(In, L, T, dt, dx, mu):
     Nt = int(round(T/float(dt)))
     Nx = int(round(L/dx))
     x = np.linspace(0, L, Nx+1)

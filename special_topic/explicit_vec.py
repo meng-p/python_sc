@@ -3,7 +3,7 @@ import numpy as np
 # forward in time, central in space
 
 
-def solver_emv(alpha, In, L, T, dt, dx, mu):
+def solver_emv(In, L, T, dt, dx, mu):
     import time
     t0 = time.perf_counter()  # measure the CPU time
     Nt = int(round(T/float(dt)))

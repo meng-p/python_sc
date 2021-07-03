@@ -6,9 +6,8 @@ import numpy as np
 dx = 0.01  # step size in space
 L = 1
 T = 0.1
-a = 1
 dt = dx/2
-mu = a*dt/(dx**2)  # mu=0.5
+mu = dt/(dx**2)  # mu=0.5
 
 
 def u01(x):  # initial condition
@@ -16,7 +15,7 @@ def u01(x):  # initial condition
 
 
 # apply the Crank-Nicolson scheme
-u, x, t = solver_cn1(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
+u, x, t = solver_cn1(In=u01, L=L, T=T, dx=dx, dt=dt, mu=mu)
 
 t = T
 u_e = np.sin(np.pi*x)*np.exp(-(np.pi**2)*t) \

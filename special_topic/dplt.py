@@ -29,11 +29,10 @@ L = np.pi
 T = 3
 Nx = 14  # choose a different step size
 Nt = 199
-a = 1
 dx = L/Nx
 dt = T/Nt
 mu = dt/(dx**2)
-u, x, t = solver_em2(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
+u, x, t = solver_em2(In=u01, L=L, T=T, dx=dx, dt=dt, mu=mu)
 
 x, t = np.meshgrid(x, t)
 ax = plt.axes(projection='3d')

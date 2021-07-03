@@ -3,7 +3,7 @@ from scipy.sparse import diags
 from scipy.sparse.linalg.dsolve.linsolve import spsolve
 
 
-def solver_imsp(alpha, In, L, T, dt, dx, mu):
+def solver_imsp(In, L, T, dt, dx, mu):
     Nt = int(round(T/float(dt)))
     Nx = int(round(L/dx))
     x = np.linspace(0, L, Nx+1)  # mesh points in space

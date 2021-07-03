@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def solver_im2(alpha, In, L, T, dt, dx, mu):
+def solver_im2(In, L, T, dt, dx, mu):
     Nt = int(round(T/float(dt)))
     Nx = int(round(L/dx))
     x = np.linspace(0, L, Nx+1)

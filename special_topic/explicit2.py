@@ -3,7 +3,7 @@ import numpy as np
 # forward in time, central in space
 
 
-def solver_em2(alpha, In, L, T, dt, dx, mu):
+def solver_em2(In, L, T, dt, dx, mu):
     # import time
     # t0 = time.perf_counter()
     Nt = int(round(T/float(dt)))

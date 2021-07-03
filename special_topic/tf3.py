@@ -12,7 +12,6 @@ def u01(x):
 # u01 = lambda x: np.sin(np.pi*x) + 0.1*np.sin(100*np.pi*x)
 
 
-a = 1
 # mu = 0.5
 E = np.zeros(3)
 dxx = [0.01, 0.05, 0.1]
@@ -22,8 +21,8 @@ for i in range(0, 3):
     # dt = mu*dx**2
     dt = 0.5*(dx**2)
     # mu = a*dt/(dx**2)
-    mu = a*dt/(dx**2)
-    u, x, t, cpu = solver_em(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
+    mu = dt/(dx**2)
+    u, x, t, cpu = solver_em(In=u01, L=L, T=T, dx=dx, dt=dt, mu=mu)
     t = T
     # x = L - dx
     u_e = np.sin(np.pi*x)*np.exp(-(np.pi**2)*t) \

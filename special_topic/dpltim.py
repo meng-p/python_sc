@@ -34,7 +34,7 @@ dx = L/Nx
 dt = T/Nt
 mu = dt/(dx**2)
 # implement the implicit Euler scheme
-u, x, t = solver_im2(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
+u, x, t = solver_im2(In=u01, L=L, T=T, dx=dx, dt=dt, mu=mu)
 
 x, t = np.meshgrid(x, t)
 ax = plt.axes(projection='3d')

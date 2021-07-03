@@ -7,9 +7,8 @@ import numpy as np
 dx = 0.01
 L = 1
 T = 0.1
-a = 1
 dt = dx/2
-mu = a*dt/(dx**2)
+mu = dt/(dx**2)
 
 
 def u01(x):
@@ -17,7 +16,7 @@ def u01(x):
 
 
 # apply the implicit Euler scheme (sparce matrix version)
-u, x, t = solver_imsp(In=u01, alpha=a, L=L, T=T, dx=dx, dt=dt, mu=mu)
+u, x, t = solver_imsp(In=u01, L=L, T=T, dx=dx, dt=dt, mu=mu)
 
 t = T
 u_i = np.sin(np.pi*x)*np.exp(-(np.pi**2)*t) \
