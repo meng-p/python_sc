@@ -27,5 +27,5 @@ def test_solver_im():
     tol = 1E-3
     assert diff < tol, 'max diff: %g' % diff
 
-    # check that the vectoerised version has the same results
+    # check whether they have the same results
     assert diff1 - diff < tol
